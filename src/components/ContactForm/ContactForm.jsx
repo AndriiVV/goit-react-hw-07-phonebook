@@ -1,13 +1,13 @@
 import styles from "./ContactForm.module.css"
 
 import { useState } from "react";
-
-import { itemAdd } from "../../redux/phonebookActions";
 import { useDispatch, useSelector } from "react-redux";
+
+import { addContact } from "../../redux/phonebookOperations";
 
 const ContactForm = () => {
 
-  const [state, setState] = useState({name: "", number: ""});
+  const [state, setState] = useState({name: "", phone: ""});
 
   const dispatch = useDispatch();
   
@@ -27,8 +27,8 @@ const ContactForm = () => {
 		  return;
 	  }
 
-    dispatch(itemAdd(state));
-    setState({name: "", number: ""});
+    dispatch(addContact({ name: state.name, phone: state.phone }));
+    setState({name: "", phone: ""});
   }
   
   return (
@@ -47,11 +47,11 @@ const ContactForm = () => {
       <label className={styles.field}>
         <span className={styles.title}>Number</span>
         <input type="tel"
-          name="number"
+          name="phone"
           onChange={getInput}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={state.number}
+          value={state.phone}
           required/>
       </label>
 

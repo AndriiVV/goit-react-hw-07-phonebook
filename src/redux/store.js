@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import phonebookReducer from "./phonebookReducer";
+import phonebook from "./phonebookSlice";
 
 const store = configureStore({
 	reducer: {
-		phonebook: phonebookReducer,
+		phonebook: phonebook,
 	},
 });
 

@@ -3,8 +3,18 @@ import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import Filter from "./components/Filter/Filter";
 import ContactList from "./components/ContactList/ContactList";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getContacts } from "./redux/phonebookOperations";
 
 const App = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		// console.log("App -> useEffect() -> getContacts()...");
+		dispatch(getContacts());
+	}, [dispatch]);
+
 	return (
 		<div className="App">
 			<h1 className="title">Phonebook</h1>

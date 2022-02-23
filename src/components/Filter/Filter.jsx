@@ -1,7 +1,8 @@
 import styles from "./Filter.module.css"
 
 import { useDispatch } from "react-redux";
-import { phonebookFilter } from "../../redux/phonebookActions";
+
+import { changeSelect } from "../../redux/phonebookSlice";
 
 const Filter = () => {
 
@@ -12,7 +13,7 @@ const Filter = () => {
       <p className={styles.title}>Find contacts by Name</p>
       <input
         type="text"
-        onChange={(event) => dispatch(phonebookFilter(event))}
+        onChange={(event) => dispatch(changeSelect(event.target.value))}
         className={styles.input}
       />
     </>
